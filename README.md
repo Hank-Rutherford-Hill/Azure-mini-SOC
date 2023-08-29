@@ -23,15 +23,19 @@ The metrics measured are as follows:
 ## Architecture After Hardening / Security Controls
 ![Architecture Diagram](https://i.imgur.com/YQNa9Pp.jpg)
 
-The architecture of the mini honeynet in Azure consists of the following components:
+## Azure Components, Technologies, and Frameworks Applied:
 
 - Virtual Network (VNet)
 - Network Security Group (NSG)
 - Virtual Machines (2 windows, 1 linux)
-- Log Analytics Workspace
+- Log Analytics Workspace / Kusto Query Language
 - Azure Key Vault
 - Azure Storage Account
-- Microsoft Sentinel
+- SIEM (Microsoft Sentinel) 
+- Microsoft Defender for Cloud
+- Powershell / Powershell ISE / CLI / RDP
+- NIST SP 700-53 (Security Controls)
+- NIST SP 800-61 (Incident Handling)
 
 For the "BEFORE" metrics, all resources were originally deployed, exposed to the internet. The Virtual Machines had both their Network Security Groups and built-in firewalls wide open, and all other resources are deployed with public endpoints visible to the Internet; aka, no use for Private Endpoints.
 
