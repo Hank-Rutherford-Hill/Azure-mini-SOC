@@ -124,3 +124,5 @@ In my Miniature SOC / Azure Honeynet project:
   - Results were compared
 
 It is worth noting that if the resources within the network were heavily utilized by regular users, it is likely that more security events and alerts may have been generated within the 24-hour period following the implementation of the security controls.
+
+Alltogether, this project has been my most enjoyable, learning-filled experience since I went through my Sec+ certification.  Using KQL and Sentinel during this lab helped me grasp concepts needed to pass my Splunk Core User exam as well.  Learning how to use Azure has certainly opened many possibilities in terms of my tech career path.  I am excited to further hone my skills in Azure with future projects, as well as an AZ certification or two!
