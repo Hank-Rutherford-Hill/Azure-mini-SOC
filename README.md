@@ -64,6 +64,8 @@ KQL was used to query logs in order to compare both vulnerable honeynet metrics,
 ## Architecture / Attack Maps Before Hardening
 ![image](https://github.com/Hank-Rutherford-Hill/Azure-mini-SOC/assets/143474898/83d6b66a-e9a4-4091-9901-2e331c3095f5)
 
+In the "BEFORE" phase of the project, we set up a virtual environment and made it publicly accessible, hoping malicious entities would find it. This phase aimed to draw in these malicious players to study their modes of attack. For this purpose, we established a Windows virtual machine with an SQL database and a Linux server, both with their network security groups (NSGs) set to "Allow All." To make the setup even more tempting, we also launched a storage account and a key vault with public endpoints that were easily accessible on the internet. Throughout this phase, Microsoft Sentinel oversaw the unprotected setup, collecting data through logs compiled in the Log Analytics workspace.
+
 ![image](https://github.com/Hank-Rutherford-Hill/Azure-mini-SOC/assets/143474898/9dc31c2d-c1ca-4985-a217-0af0c4223c49)
   - This attack map shows SSH authorization failures against my Linux VM.
 
@@ -83,11 +85,12 @@ KQL was used to query logs in order to compare both vulnerable honeynet metrics,
 ## Architecture After Hardening
 ![image](https://github.com/Hank-Rutherford-Hill/Azure-mini-SOC/assets/143474898/72eb8257-eecd-447e-b4fb-9b25b333628e)
 
+In the project's "AFTER" phase, the environment underwent hardening and security enhancements to meet the standards of NIST SP 800-53 Rev5 SC-7. The following measures were employed:
+1. Network Security Groups (NSGs): We reinforced the NSGs by denying all inbound and outbound traffic, only allowing exceptions for specified public IP addresses needing virtual machine access. This measure guaranteed that only trusted, approved traffic accessed the virtual machines.
+2. Built-in Firewalls: We tailored Azure's innate firewalls on the virtual machines to fend off unauthorized access and shield the resources from potentially harmful connections. This adaptation narrowed down the rules for each virtual machine based on its service and roles, reducing the opportunities for malicious actors.
+3. Private Endpoints: For a more robust security layer for the Azure Key Vault and Storage Containers, we switched from Public Endpoints to Private Endpoints. This change made sure that these critical resources were only accessible within the virtual network, preventing exposure to the broader internet. 
+
 ```NOTE: All map queries actually returned no results due to no instances of malicious activity for the 24 hour period after hardening, so you will see no attack maps in this section!```
-
-For the "BEFORE" metrics, all resources were originally deployed, exposed to the internet. The Virtual Machines had both their Network Security Groups and built-in firewalls wide open, and all other resources are deployed with public endpoints visible to the Internet; aka, no use for Private Endpoints.
-
-For the "AFTER" metrics, Network Security Groups were hardened by blocking ALL traffic with the exception of my admin workstation, and all other resources were protected by their built-in firewalls as well as Private Endpoint
 
 ## Metrics Before Hardening
 
@@ -104,11 +107,7 @@ The following table shows the metrics we measured in our insecure environment fo
 | SecurityIncident         | 594
 | AzureNetworkAnalytics_CL | 2,162
 
-## Attack Maps Before Hardening / Security Controls
-
-
-
-## Metrics After Hardening / Security Controls
+## Metrics After Hardening
 
 The following table shows the metrics we measured in our environment for another 24 hours, but after we have applied security controls:
 
