@@ -1,6 +1,7 @@
 # Building a SOC + Honeynet in Azure (Live Traffic)
 
-![image](https://github.com/Hank-Rutherford-Hill/Azure-mini-SOC/assets/143474898/096d5598-c649-4ad7-89be-d12bd0774b91)
+![image](https://github.com/Hank-Rutherford-Hill/Azure-mini-SOC/assets/143474898/61742e50-bb8d-45f0-8065-2624775e294d)
+
 
 
 ## Introduction
