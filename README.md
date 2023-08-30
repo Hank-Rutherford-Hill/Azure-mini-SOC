@@ -55,33 +55,41 @@ Post incident response, measures were taken to secure the environment.  I enable
   - Enabling private links for key vault
   - Employing a NSG rule to only allow traffic from my IP address
 
-After all of this, I reallocated my honeynet VMs to capture the metrics of a secured environment.
+After all of this, I was ready to capture the metrics of a secured environment.
 
 ## Execution - Phase V - Results & Metrics Comparison
 
 KQL was used to query logs in order to compare both vulnerable honeynet metrics, and secure environment metrics.  Results were recorded onto a spreadsheet for comparison to determine the effectiveness of the security controls that were employed. 
 
-## Architecture Before Hardening / Security Controls
+## Architecture / Attack Maps Before Hardening
 ![image](https://github.com/Hank-Rutherford-Hill/Azure-mini-SOC/assets/143474898/83d6b66a-e9a4-4091-9901-2e331c3095f5)
 
+![image](https://github.com/Hank-Rutherford-Hill/Azure-mini-SOC/assets/143474898/9dc31c2d-c1ca-4985-a217-0af0c4223c49)
+  - This attack map shows SSH authorization failures against my Linux VM.
 
-## Architecture After Hardening / Security Controls
+  
+![image](https://github.com/Hank-Rutherford-Hill/Azure-mini-SOC/assets/143474898/4b02e0bb-a0f5-456c-a213-5e5a5175a96d)
+  - This attack map shows RDP authorization failures against my Windows VM.
+  
+  
+![image](https://github.com/Hank-Rutherford-Hill/Azure-mini-SOC/assets/143474898/27d78ff8-6eb2-4a8c-abf5-c62c9ad1430e)
+  - This attack map shows Microsoft SQL Server (housed on my Windows VM) authorization failures.
+
+    
+![image](https://github.com/Hank-Rutherford-Hill/Azure-mini-SOC/assets/143474898/7e92df8e-2d5f-4817-8b11-556a867405cb)
+  - This attack map shows the malicious traffic that was allowed through my NSG due to misconfiguration.
+    
+
+## Architecture After Hardening
 ![image](https://github.com/Hank-Rutherford-Hill/Azure-mini-SOC/assets/143474898/72eb8257-eecd-447e-b4fb-9b25b333628e)
 
-
+```NOTE: All map queries actually returned no results due to no instances of malicious activity for the 24 hour period after hardening, so you will see no attack maps in this section!```
 
 For the "BEFORE" metrics, all resources were originally deployed, exposed to the internet. The Virtual Machines had both their Network Security Groups and built-in firewalls wide open, and all other resources are deployed with public endpoints visible to the Internet; aka, no use for Private Endpoints.
 
 For the "AFTER" metrics, Network Security Groups were hardened by blocking ALL traffic with the exception of my admin workstation, and all other resources were protected by their built-in firewalls as well as Private Endpoint
 
-## Attack Maps Before Hardening / Security Controls
-
-![image](https://github.com/Hank-Rutherford-Hill/Azure-mini-SOC/assets/143474898/9dc31c2d-c1ca-4985-a217-0af0c4223c49)
-![image](https://github.com/Hank-Rutherford-Hill/Azure-mini-SOC/assets/143474898/4b02e0bb-a0f5-456c-a213-5e5a5175a96d)
-![image](https://github.com/Hank-Rutherford-Hill/Azure-mini-SOC/assets/143474898/27d78ff8-6eb2-4a8c-abf5-c62c9ad1430e)
-![image](https://github.com/Hank-Rutherford-Hill/Azure-mini-SOC/assets/143474898/7e92df8e-2d5f-4817-8b11-556a867405cb)
-
-## Metrics Before Hardening / Security Controls
+## Metrics Before Hardening
 
 The following table shows the metrics we measured in our insecure environment for 24 hours:
 
@@ -98,7 +106,7 @@ The following table shows the metrics we measured in our insecure environment fo
 
 ## Attack Maps Before Hardening / Security Controls
 
-```All map queries actually returned no results due to no instances of malicious activity for the 24 hour period after hardening.```
+
 
 ## Metrics After Hardening / Security Controls
 
