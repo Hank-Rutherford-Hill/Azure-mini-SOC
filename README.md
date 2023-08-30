@@ -23,7 +23,7 @@ The metrics measured are as follows:
 
 - Virtual Network (VNet)
 - Network Security Group (NSG)
-- Virtual Machines (2 windows, 1 linux)
+- Virtual Machines (2 Windows, 1 Linux)
 - Log Analytics Workspace / Kusto Query Language
 - Azure Key Vault
 - Azure Storage Account
@@ -64,7 +64,7 @@ KQL was used to query logs in order to compare both vulnerable honeynet metrics,
 ## Architecture / Attack Maps Before Hardening
 ![image](https://github.com/Hank-Rutherford-Hill/Azure-mini-SOC/assets/143474898/83d6b66a-e9a4-4091-9901-2e331c3095f5)
 
-In the "BEFORE" phase of the project, we set up a virtual environment and made it publicly accessible, hoping malicious entities would find it. This phase aimed to draw in these malicious players to study their modes of attack. For this purpose, we established a Windows virtual machine with an SQL database and a Linux server, both with their network security groups (NSGs) set to "Allow All." To make the setup even more tempting, we also launched a storage account and a key vault with public endpoints that were easily accessible on the internet. Throughout this phase, Microsoft Sentinel oversaw the unprotected setup, collecting data through logs compiled in the Log Analytics workspace.
+In the "BEFORE" phase of the project, we set up a virtual environment and made it publicly accessible, hoping malicious entities would find it. This phase aimed to draw in these malicious players to study their modes of attack. For this purpose, we established a Windows virtual machine with an SQL database and a Linux server, both with their NSGs set to "Allow All." To make the setup even more tempting, we also launched a storage account and a key vault with public endpoints that were easily accessible on the internet. Throughout this phase, Microsoft Sentinel oversaw the unprotected setup, collecting data through logs compiled in the Log Analytics workspace.
 
 ![image](https://github.com/Hank-Rutherford-Hill/Azure-mini-SOC/assets/143474898/9dc31c2d-c1ca-4985-a217-0af0c4223c49)
   - This attack map shows SSH authorization failures against my Linux VM.
@@ -85,8 +85,8 @@ In the "BEFORE" phase of the project, we set up a virtual environment and made i
 ## Architecture After Hardening
 ![image](https://github.com/Hank-Rutherford-Hill/Azure-mini-SOC/assets/143474898/72eb8257-eecd-447e-b4fb-9b25b333628e)
 
-In the project's "AFTER" phase, the environment underwent hardening and security enhancements to meet the standards of NIST SP 800-53 Rev5 SC-7. The following measures were employed:
-1. Network Security Groups (NSGs): We reinforced the NSGs by denying all inbound and outbound traffic, only allowing exceptions for specified public IP addresses needing virtual machine access. This measure guaranteed that only trusted, approved traffic accessed the virtual machines.
+In the project's "AFTER" phase, the environment underwent hardening and security enhancements to meet the standards of NIST SP 800-53 Rev5 SC-7. Below are some of the measures employed:
+1. NSGs: We reinforced the NSGs by denying all inbound and outbound traffic, only allowing exceptions for specified public IP addresses needing virtual machine access. This measure guaranteed that only trusted, approved traffic accessed the virtual machines.
 2. Built-in Firewalls: We tailored Azure's innate firewalls on the virtual machines to fend off unauthorized access and shield the resources from potentially harmful connections. This adaptation narrowed down the rules for each virtual machine based on its service and roles, reducing the opportunities for malicious actors.
 3. Private Endpoints: For a more robust security layer for the Azure Key Vault and Storage Containers, we switched from Public Endpoints to Private Endpoints. This change made sure that these critical resources were only accessible within the virtual network, preventing exposure to the broader internet. 
 
@@ -138,4 +138,4 @@ In my Miniature SOC / Azure Honeynet project:
 
 It is worth noting that if the resources within the network were heavily utilized by regular users, it is likely that more security events and alerts may have been generated within the 24-hour period following the implementation of the security controls.
 
-Alltogether, this project has been my most enjoyable, learning-filled experience since I went through my Sec+ certification.  Using KQL and Sentinel during this lab helped me grasp concepts needed to pass my Splunk Core User exam as well.  Learning how to use Azure has certainly opened many possibilities in terms of my tech career path.  I am excited to further hone my skills in Azure with future projects, as well as an AZ certification or two!
+Alltogether, this project has been my most enjoyable, learning-filled experience since I went through my Sec+ certification.  Using KQL and Sentinel during this lab helped me grasp concepts needed to pass my Splunk Core User exam as well.  Learning how to use Azure has certainly opened many possibilities in terms of my tech career path.  I am excited to further hone my skills in Azure with future projects, and even obtaining an Azure certification or two!
