@@ -63,7 +63,8 @@ After all of this, I was ready to capture the metrics of a secured environment.
 KQL was used to query logs in order to compare both vulnerable honeynet metrics, and secure environment metrics.  Results were recorded onto a spreadsheet for comparison to determine the effectiveness of the security controls that were employed. 
 
 ## Architecture / Attack Maps Before Hardening
-![image](https://github.com/Hank-Rutherford-Hill/Azure-mini-SOC/assets/143474898/83d6b66a-e9a4-4091-9901-2e331c3095f5)
+![image](https://github.com/Hank-Rutherford-Hill/Azure-mini-SOC/assets/143474898/780d6b07-4ef5-43df-8424-92304e5d4a76)
+
 
 In the "BEFORE" phase of the project, we set up a virtual environment and made it publicly accessible, hoping malicious entities would find it. This phase aimed to draw in these malicious players to study their modes of attack. For this purpose, we established a Windows virtual machine with an SQL database and a Linux server, both with their NSGs set to "Allow All." To make the setup even more tempting, we also launched a storage account and a key vault with public endpoints that were easily accessible on the internet. Throughout this phase, Microsoft Sentinel oversaw the unprotected setup, collecting data through logs compiled in the Log Analytics workspace.
 
@@ -84,7 +85,8 @@ In the "BEFORE" phase of the project, we set up a virtual environment and made i
     
 
 ## Architecture After Hardening
-![image](https://github.com/Hank-Rutherford-Hill/Azure-mini-SOC/assets/143474898/72eb8257-eecd-447e-b4fb-9b25b333628e)
+![image](https://github.com/Hank-Rutherford-Hill/Azure-mini-SOC/assets/143474898/4527e30a-ec51-4349-bd55-0e6b71e30246)
+
 
 In the project's "AFTER" phase, the environment underwent hardening and security enhancements to meet the standards of NIST SP 800-53 Rev5 SC-7. Below are some of the measures employed:
 1. NSGs: We reinforced the NSGs by denying all inbound and outbound traffic, only allowing exceptions for specified public IP addresses needing virtual machine access. This measure guaranteed that only trusted, approved traffic accessed the virtual machines.
