@@ -66,7 +66,8 @@ KQL was used to query logs in order to compare both vulnerable honeynet metrics,
 
 
 ## Architecture After Hardening / Security Controls
-![Architecture Diagram](https://i.imgur.com/YQNa9Pp.jpg)
+![image](https://github.com/Hank-Rutherford-Hill/Azure-mini-SOC/assets/143474898/72eb8257-eecd-447e-b4fb-9b25b333628e)
+
 
 
 For the "BEFORE" metrics, all resources were originally deployed, exposed to the internet. The Virtual Machines had both their Network Security Groups and built-in firewalls wide open, and all other resources are deployed with public endpoints visible to the Internet; aka, no use for Private Endpoints.
