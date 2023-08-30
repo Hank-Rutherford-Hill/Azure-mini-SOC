@@ -62,7 +62,8 @@ After all of this, I reallocated my honeynet VMs to capture the metrics of a sec
 KQL was used to query logs in order to compare both vulnerable honeynet metrics, and secure environment metrics.  Results were recorded onto a spreadsheet for comparison to determine the effectiveness of the security controls that were employed. 
 
 ## Architecture Before Hardening / Security Controls
-![Architecture Diagram](https://i.imgur.com/aBDwnKb.jpg)
+![image](https://github.com/Hank-Rutherford-Hill/Azure-mini-SOC/assets/143474898/83d6b66a-e9a4-4091-9901-2e331c3095f5)
+
 
 ## Architecture After Hardening / Security Controls
 ![Architecture Diagram](https://i.imgur.com/YQNa9Pp.jpg)
