@@ -38,6 +38,9 @@ The metrics measured are as follows:
 
 After opening a free Azure subscription, I created two resource groups.  One resource group housed two VMs (1 Microsoft, 1 Linux) that would constitute the two endpoints of my honeynet.  The other resource group housed a Microsoft "Attacker" VM, which I used to simulate certain attacks, letting me know that my logs were being generated as planned.  Regarding the honeynet VMs, I purposefully misconfigured the firewall and Network Security Group to allow traffic from all ports.  Furthermore, I disabled every setting in Microsoft defender, resulting in a wide open, public internet facing environment that enticed many, many attackers!
 
+![image](https://github.com/Hank-Rutherford-Hill/Azure-mini-SOC/assets/143474898/a00e349d-b7a5-4b07-9b03-9aac22afab44)
+  - As you can see, the Windows-VM-nsg is improperly configured to allow all inbound traffic from anywhere.  The priority (290) is the lowest value of all of my Windows-VM-nsg rules so that it will be adhered to before any other rule. 
+
 ## Execution - Phase II - Attack Simulation, Logging and Monitoring
 
 Various attacks were executed with the aforementioned "Attacker" VM.  Powershell was utilized to simulate brute force attempts, malware (EICAR) files, Active Directory brute force success, privilege escalation, and Windows brute force success.  Many organic attacks were also perpetrated on the honeynet.  I used KQL in Log Analytics Workspaces to query data from the logs in order to analyze both the simulated and organic attacks.
