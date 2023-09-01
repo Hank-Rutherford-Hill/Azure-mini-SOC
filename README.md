@@ -49,6 +49,11 @@ Various attacks were executed with the aforementioned "Attacker" VM.  Powershell
   - Above, you'll see a KQL query that I used to pull some logs from organic attacks against the weakened Windows-VM.  Event ID 4625 signifies 'an account failed to log in'.  In the time range selector section, I selected a custom time range between 8/10/23 and 8/11/23. 
  As you can see, there are over 2,500 failed log in attempts in this time frame. These attacks were made possible due to an improperly configured NSG (as seen in the screenshot in 'Execution - Phase I'), and a disabled firewall.
 
+
+
+![image](https://github.com/Hank-Rutherford-Hill/Azure-mini-SOC/assets/143474898/ded5fecf-3545-4f6a-9916-c75a3c4c82dc)
+
+
 ## Execution - Phase III - Incident Response
 
 After establishing alert rules, I observed incidents being generated in Sentinel.  I examined several incidents, and for each, I assessed information about the entities involved in these attacks.  I reviewed the IP address, the TTPs / type of attack, and th timeline of each attack.  I made sure to expound upon my investigation by inspecting any related alerts that a particular entity was involved in, in order to further determine the scope of the incident(s) and wether or not an incident could have been a false positive. 
