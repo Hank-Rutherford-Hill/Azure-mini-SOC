@@ -58,6 +58,12 @@ Various attacks were executed with the aforementioned "Attacker" VM.  Powershell
 
 After establishing alert rules, I observed incidents being generated in Sentinel.  I examined several incidents, and for each, I assessed information about the entities involved in these attacks.  I reviewed the IP address, the TTPs / type of attack, and th timeline of each attack.  I made sure to expound upon my investigation by inspecting any related alerts that a particular entity was involved in, in order to further determine the scope of the incident(s) and wether or not an incident could have been a false positive. 
 
+![image](https://github.com/Hank-Rutherford-Hill/Azure-mini-SOC/assets/143474898/42cb7e12-2b8b-4018-9d13-25170b6f888c)
+  - For this Azure AD Brute Force Success alert, I assigned myself as an owner, marked the status as 'active', and severity was preset in alert rules to 'High'.
+
+![image](https://github.com/Hank-Rutherford-Hill/Azure-mini-SOC/assets/143474898/097931a1-b7dc-4ff5-aa2c-12845bdb1739)
+  - I generated this Brute Force Success attack from my Attack-VM with a Powershell script, so the typical incident response measures were not carried through.  Normally, you would deallocate the machine that was compromised, change the credentials, enable MFA, blcok the IP address (and many more steps).  However, this was just a simulation (and I needed to continue using my Attack-VM to simulate and respond to additional attacks), so when I created the documentation for this event, I *pretended* that I responded with the aforementioned measures!
+
 ## Execution - Phase IV - Attack Remediation, Implemeting Regulatory Compliance Measures
 
 Post incident response, measures were taken to secure the environment.  I enabled security controls from both NIST 800-53, and Microsoft Defender for Cloud Recoommendations (which, honestly were quite similar to NIST 800-53).  Some of these controls include:
