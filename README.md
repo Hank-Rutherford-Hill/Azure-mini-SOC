@@ -58,7 +58,7 @@ As you can see, there are over 2,500 failed log in attempts in this time frame. 
 
 ## Execution - Phase III - Incident Response
 
-After establishing alert rules, I observed incidents being generated in Sentinel.  I examined several incidents, and for each, I assessed information about the entities involved in these attacks.  I reviewed the IP address, the TTPs / type of attack, and th timeline of each attack.  I made sure to expound upon my investigation by inspecting any related alerts that a particular entity was involved in, in order to further determine the scope of the incident(s) and wether or not an incident could have been a false positive. 
+After establishing alert rules, I observed incidents being generated in Sentinel.  I examined several incidents, and for each, I assessed information about the entities involved in these attacks.  I reviewed the IP address, the TTPs / type of attack, and the timeline of each attack.  I made sure to expound upon my investigation by inspecting any related alerts that a particular entity was involved in, in order to further determine the scope of the incident(s) and wether or not an incident could have been a false positive. 
 
 ![image](https://github.com/Hank-Rutherford-Hill/Azure-mini-SOC/assets/143474898/42cb7e12-2b8b-4018-9d13-25170b6f888c)
 
@@ -66,11 +66,11 @@ After establishing alert rules, I observed incidents being generated in Sentinel
 
 ![image](https://github.com/Hank-Rutherford-Hill/Azure-mini-SOC/assets/143474898/097931a1-b7dc-4ff5-aa2c-12845bdb1739)
 
-*I generated this Brute Force Success attack from my Attack-VM with a Powershell script, so the typical incident response measures were not carried through.  Normally, you would deallocate the machine that was compromised, change the credentials, enable MFA, blcok the IP address (and many more steps).  However, this was just a simulation (and I needed to continue using my Attack-VM to simulate and respond to additional attacks), so when I created the documentation for this event, I ```pretended``` that I responded with the aforementioned measures!*
+*I generated this Brute Force Success attack from my Attack-VM with a Powershell script, so the typical incident response measures were not carried through.  Normally, you would deallocate the machine that was compromised, change the credentials, enable MFA, blockk the IP address (and many more steps).  However, this was just a simulation (and I needed to continue using my Attack-VM to simulate and respond to additional attacks), so when I created the documentation for this event, I ```pretended``` that I responded with the aforementioned measures!*
 
 ## Execution - Phase IV - Attack Remediation, Implemeting Regulatory Compliance Measures
 
-Post incident response, measures were taken to secure the environment.  I enabled security controls from both NIST 800-53, and Microsoft Defender for Cloud Recoommendations (which, honestly were quite similar to NIST 800-53).  Some of these controls include:
+Post incident response, measures were taken to secure the environment.  I enabled security controls from both NIST 800-53, and Microsoft Defender for Cloud Recoommendations (which honestly were quite similar to NIST 800-53).  Some of these controls include:
 
   - Disabling public acccess to the VMs and blob storage account
   - Creating private endpoints for the storage account and VMs
@@ -94,7 +94,7 @@ KQL was used to query logs in order to compare both vulnerable honeynet metrics,
 
 ## Architecture Before Hardening
 
-In the "BEFORE" phase of the project, we set up a virtual environment and made it publicly accessible, hoping malicious entities would find it. This phase aimed to draw in these malicious players to study their modes of attack. For this purpose, we established a Windows virtual machine with an SQL database and a Linux server, both with their NSGs set to "Allow All." To make the setup even more tempting, we also launched a storage account and a key vault with public endpoints that were easily accessible on the internet. Throughout this phase, Microsoft Sentinel oversaw the unprotected setup, collecting data through logs compiled in the Log Analytics workspace.
+In the "BEFORE" phase of the project, we set up a virtual environment and made it publicly accessible, hoping malicious entities would find it. This phase aimed to draw in these malicious players to study their modes of attack. For this purpose, we established a Windows virtual machine with an SQL database and a Linux server, both with their NSGs set to "Allow All." To make the setup even more tempting, we also launched a storage account and a key vault with public endpoints that were easily accessible on the internet. Throughout this phase, Microsoft Sentinel oversaw the unprotected setup, and collected data from logs compiled in the Log Analytics workspace.
 
 ![image](https://github.com/Hank-Rutherford-Hill/Azure-mini-SOC/assets/143474898/780d6b07-4ef5-43df-8424-92304e5d4a76)
 
@@ -125,7 +125,7 @@ In the "BEFORE" phase of the project, we set up a virtual environment and made i
 In the project's "AFTER" phase, the environment underwent hardening and security enhancements to meet the standards of NIST SP 800-53 Rev5 SC-7. Below are some of the measures employed:
 1. NSGs: We reinforced the NSGs by denying all inbound and outbound traffic, only allowing exceptions for specified public IP addresses needing virtual machine access. This measure guaranteed that only trusted, approved traffic accessed the virtual machines.
 2. Built-in Firewalls: We tailored Azure's innate firewalls on the virtual machines to fend off unauthorized access and shield the resources from potentially harmful connections. This adaptation narrowed down the rules for each virtual machine based on its service and roles, reducing the opportunities for malicious actors.
-3. Private Endpoints: For a more robust security layer for the Azure Key Vault and Storage Containers, we switched from Public Endpoints to Private Endpoints. This change made sure that these critical resources were only accessible within the virtual network, preventing exposure to the broader internet.
+3. Private Endpoints: For a more robust security layer for the Azure Key Vault and Storage Containers, we switched from public endpoints to private endpoints. This change made sure that these critical resources were only accessible within the virtual network, preventing exposure to the broader internet.
 
 ![image](https://github.com/Hank-Rutherford-Hill/Azure-mini-SOC/assets/143474898/4527e30a-ec51-4349-bd55-0e6b71e30246)
 
@@ -178,4 +178,4 @@ In my Miniature SOC / Azure Honeynet project:
 
 It is worth noting that if the resources within the network were heavily utilized by regular users, it is likely that more security events and alerts may have been generated within the 24-hour period following the implementation of the security controls.
 
-Alltogether, this project has been my most enjoyable, learning-filled experience since I went through my Sec+ certification.  Using KQL and Sentinel during this lab helped me grasp concepts needed to pass my Splunk Core User exam as well.  Learning how to use Azure has certainly opened many possibilities in terms of my tech career path.  I am excited to further hone my skills in Azure with future projects, and even obtaining an Azure certification or two!
+Altogether, this project has been my most enjoyable, learning-filled experience since I went through my Sec+ certification.  Using KQL and Sentinel during this lab helped me grasp concepts needed to pass my Splunk Core User certification exam as well.  Learning how to use Azure has certainly opened many possibilities in terms of my tech career path.  I am excited to further hone my skills in Azure with future projects, and even obtaining an Azure certification or two!
