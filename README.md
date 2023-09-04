@@ -90,7 +90,7 @@ KQL was used to query logs in order to compare both vulnerable honeynet metrics,
 
 ![image](https://github.com/Hank-Rutherford-Hill/Azure-mini-SOC/assets/143474898/2e210731-d753-4f90-8b81-5f5d1b17e734)
 
-*The above shows the various KQL queries that helped me measure the metrics pre and post hardening.**
+*The above shows the various KQL queries that helped me measure the metrics pre and post hardening.*
 
 ## Architecture Before Hardening
 
