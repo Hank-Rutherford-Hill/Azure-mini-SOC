@@ -2,8 +2,6 @@
 
 ![image](https://github.com/Hank-Rutherford-Hill/Azure-mini-SOC/assets/143474898/61742e50-bb8d-45f0-8065-2624775e294d)
 
-
-
 ## Introduction
 
 For this project, I utilized Microsoft Azure to create a honeynet in order to simulate a weakened environment that allured attackers to attempt to breach the network.  This project allowed me to demonstrate practical knowledge of incident response, system hardening, and overall proficiency on the Azure platform.
@@ -39,15 +37,15 @@ The metrics measured are as follows:
 After opening a free Azure subscription, I created two resource groups.  One resource group housed two VMs (1 Microsoft, 1 Linux) that would constitute the two endpoints of my honeynet.  The other resource group housed a Microsoft "Attacker" VM, which I used to simulate certain attacks, letting me know that my logs were being generated as planned.  Regarding the honeynet VMs, I purposefully misconfigured the firewall and Network Security Group to allow traffic from all ports.  Furthermore, I disabled every setting in Microsoft defender, resulting in a wide open, public internet facing environment that enticed many, many attackers!
 
 ![image](https://github.com/Hank-Rutherford-Hill/Azure-mini-SOC/assets/143474898/a00e349d-b7a5-4b07-9b03-9aac22afab44)
-  - As you can see, the Windows-VM-nsg is improperly configured to allow all inbound traffic from anywhere.  The priority (290) is the lowest value of all of my Windows-VM-nsg rules so that it will be adhered to before any other rule. 
+*As you can see, the Windows-VM-nsg is improperly configured to allow all inbound traffic from anywhere.  The priority (290) is the lowest value of all of my Windows-VM-nsg rules so that it will be adhered to before any other rule.* 
 
 ## Execution - Phase II - Attack Simulation, Logging and Monitoring
 
 Various attacks were executed with the aforementioned "Attacker" VM.  Powershell was utilized to simulate brute force attempts, malware (EICAR) files, Active Directory brute force success, privilege escalation, and Windows brute force success.  Many organic attacks were also perpetrated on the honeynet.  I used KQL in Log Analytics Workspaces to query data from the logs in order to analyze both the simulated and organic attacks.
 
 ![image](https://github.com/Hank-Rutherford-Hill/Azure-mini-SOC/assets/143474898/b1e5605d-0f78-488f-8f98-08f06b6e3a45)
-  - Above, you'll see a KQL query that I used to pull some logs from organic attacks against the weakened Windows-VM.  Event ID 4625 signifies 'an account failed to log in'.  In the time range selector section, I selected a custom time range between 8/10/23 and 8/11/23. 
- As you can see, there are over 2,500 failed log in attempts in this time frame. These attacks were made possible due to an improperly configured NSG (as seen in the screenshot in 'Execution - Phase I'), and a disabled firewall.
+*Above, you'll see a KQL query that I used to pull some logs from organic attacks against the weakened Windows-VM.  Event ID 4625 signifies 'an account failed to log in'.  In the time range selector section, I selected a custom time range between 8/10/23 and 8/11/23. 
+As you can see, there are over 2,500 failed log in attempts in this time frame. These attacks were made possible due to an improperly configured NSG (as seen in the screenshot in 'Execution - Phase I'), and a disabled firewall.*
 
 
 
@@ -59,10 +57,10 @@ Various attacks were executed with the aforementioned "Attacker" VM.  Powershell
 After establishing alert rules, I observed incidents being generated in Sentinel.  I examined several incidents, and for each, I assessed information about the entities involved in these attacks.  I reviewed the IP address, the TTPs / type of attack, and th timeline of each attack.  I made sure to expound upon my investigation by inspecting any related alerts that a particular entity was involved in, in order to further determine the scope of the incident(s) and wether or not an incident could have been a false positive. 
 
 ![image](https://github.com/Hank-Rutherford-Hill/Azure-mini-SOC/assets/143474898/42cb7e12-2b8b-4018-9d13-25170b6f888c)
-  - For this Azure AD Brute Force Success alert, I assigned myself as an owner, marked the status as 'active', and severity was preset in alert rules to 'High'.
+*For this Azure AD Brute Force Success alert, I assigned myself as an owner, marked the status as 'active', and severity was preset in alert rules to 'High'.*
 
 ![image](https://github.com/Hank-Rutherford-Hill/Azure-mini-SOC/assets/143474898/097931a1-b7dc-4ff5-aa2c-12845bdb1739)
-  - I generated this Brute Force Success attack from my Attack-VM with a Powershell script, so the typical incident response measures were not carried through.  Normally, you would deallocate the machine that was compromised, change the credentials, enable MFA, blcok the IP address (and many more steps).  However, this was just a simulation (and I needed to continue using my Attack-VM to simulate and respond to additional attacks), so when I created the documentation for this event, I *pretended* that I responded with the aforementioned measures!
+*I generated this Brute Force Success attack from my Attack-VM with a Powershell script, so the typical incident response measures were not carried through.  Normally, you would deallocate the machine that was compromised, change the credentials, enable MFA, blcok the IP address (and many more steps).  However, this was just a simulation (and I needed to continue using my Attack-VM to simulate and respond to additional attacks), so when I created the documentation for this event, I *pretended* that I responded with the aforementioned measures!*
 
 ## Execution - Phase IV - Attack Remediation, Implemeting Regulatory Compliance Measures
 
@@ -87,19 +85,19 @@ KQL was used to query logs in order to compare both vulnerable honeynet metrics,
 In the "BEFORE" phase of the project, we set up a virtual environment and made it publicly accessible, hoping malicious entities would find it. This phase aimed to draw in these malicious players to study their modes of attack. For this purpose, we established a Windows virtual machine with an SQL database and a Linux server, both with their NSGs set to "Allow All." To make the setup even more tempting, we also launched a storage account and a key vault with public endpoints that were easily accessible on the internet. Throughout this phase, Microsoft Sentinel oversaw the unprotected setup, collecting data through logs compiled in the Log Analytics workspace.
 
 ![image](https://github.com/Hank-Rutherford-Hill/Azure-mini-SOC/assets/143474898/9dc31c2d-c1ca-4985-a217-0af0c4223c49)
-  - This attack map shows SSH authorization failures against my Linux VM.
+*This attack map shows SSH authorization failures against my Linux VM.*
 
   
 ![image](https://github.com/Hank-Rutherford-Hill/Azure-mini-SOC/assets/143474898/4b02e0bb-a0f5-456c-a213-5e5a5175a96d)
-  - This attack map shows RDP authorization failures against my Windows VM.
+*This attack map shows RDP authorization failures against my Windows VM.*
   
   
 ![image](https://github.com/Hank-Rutherford-Hill/Azure-mini-SOC/assets/143474898/27d78ff8-6eb2-4a8c-abf5-c62c9ad1430e)
-  - This attack map shows Microsoft SQL Server (housed on my Windows VM) authorization failures.
+*This attack map shows Microsoft SQL Server (housed on my Windows VM) authorization failures.*
 
     
 ![image](https://github.com/Hank-Rutherford-Hill/Azure-mini-SOC/assets/143474898/7e92df8e-2d5f-4817-8b11-556a867405cb)
-  - This attack map shows the malicious traffic that was allowed through my NSG due to misconfiguration.
+*This attack map shows the malicious traffic that was allowed through my NSG due to misconfiguration.*
     
 
 ## Architecture After Hardening
