@@ -8,7 +8,7 @@ For this project, I utilized Microsoft Azure to create a honeynet in order to si
 
 ## Objective
 
-In this Azure miniature SOC project, the intent of creating a honeynet was to give me the opportunity to evaluate live cyberattacks, evaluate the logs associated with said cyberattacks, investigate alerts, understand attacker's TTPs, and perform incident responste.  I ran an insecure environment for 24 hours, and captured the metrics using Log Analytics Worskapces and created attack maps within sentinel.  Additionally, I focused on hardening the vulnerable environment by re-configuring NSGs, establishing private links & endpoints, and administering regulatory compliance, NIST 800-53, and Microsoft Defender for Cloud recommendations.  Post hardeining, I captured the same metrics for another 24 hour period on a secured system.
+In this Azure miniature SOC project, the intent of creating a honeynet was to give me the opportunity to evaluate live cyberattacks, evaluate the logs associated with said cyberattacks, investigate alerts, understand attacker's TTPs, and perform incident response.  I ran an insecure environment for 24 hours, and captured the metrics using Log Analytics Worskapces and created attack maps within sentinel.  Additionally, I focused on hardening the vulnerable environment by re-configuring NSGs, establishing private links & endpoints, and administering regulatory compliance, NIST 800-53, and Microsoft Defender for Cloud recommendations.  Post hardeining, I captured the same metrics for another 24 hour period on a secured system.
 
 The metrics measured are as follows:
 
@@ -52,6 +52,8 @@ As you can see, there are over 2,500 failed log in attempts in this time frame. 
 
 
 ![image](https://github.com/Hank-Rutherford-Hill/Azure-mini-SOC/assets/143474898/ded5fecf-3545-4f6a-9916-c75a3c4c82dc)
+
+*In the shot above, I drilled down into the logs associated with Event IDs 1116 and 1117.  If you read the log closely, you'll be able to determine an EICAR file was created, triggering a malware alert.*
 
 
 ## Execution - Phase III - Incident Response
