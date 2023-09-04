@@ -66,7 +66,7 @@ After establishing alert rules, I observed incidents being generated in Sentinel
 
 ![image](https://github.com/Hank-Rutherford-Hill/Azure-mini-SOC/assets/143474898/097931a1-b7dc-4ff5-aa2c-12845bdb1739)
 
-*I generated this Brute Force Success attack from my Attack-VM with a Powershell script, so the typical incident response measures were not carried through.  Normally, you would deallocate the machine that was compromised, change the credentials, enable MFA, blcok the IP address (and many more steps).  However, this was just a simulation (and I needed to continue using my Attack-VM to simulate and respond to additional attacks), so when I created the documentation for this event, I *pretended* that I responded with the aforementioned measures!*
+*I generated this Brute Force Success attack from my Attack-VM with a Powershell script, so the typical incident response measures were not carried through.  Normally, you would deallocate the machine that was compromised, change the credentials, enable MFA, blcok the IP address (and many more steps).  However, this was just a simulation (and I needed to continue using my Attack-VM to simulate and respond to additional attacks), so when I created the documentation for this event, I ```pretended``` that I responded with the aforementioned measures!*
 
 ## Execution - Phase IV - Attack Remediation, Implemeting Regulatory Compliance Measures
 
