@@ -86,6 +86,10 @@ After all of this, I was ready to capture the metrics of a secured environment.
 
 KQL was used to query logs in order to compare both vulnerable honeynet metrics, and secure environment metrics.  Results were recorded onto a spreadsheet for comparison to determine the effectiveness of the security controls that were employed. 
 
+![image](https://github.com/Hank-Rutherford-Hill/Azure-mini-SOC/assets/143474898/2e210731-d753-4f90-8b81-5f5d1b17e734)
+
+*The above shows the various KQL queries that helped me measure the metrics pre and post hardening.**
+
 ## Architecture Before Hardening
 
 In the "BEFORE" phase of the project, we set up a virtual environment and made it publicly accessible, hoping malicious entities would find it. This phase aimed to draw in these malicious players to study their modes of attack. For this purpose, we established a Windows virtual machine with an SQL database and a Linux server, both with their NSGs set to "Allow All." To make the setup even more tempting, we also launched a storage account and a key vault with public endpoints that were easily accessible on the internet. Throughout this phase, Microsoft Sentinel oversaw the unprotected setup, collecting data through logs compiled in the Log Analytics workspace.
