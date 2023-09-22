@@ -34,7 +34,7 @@ The metrics measured are as follows:
 
 ## Execution - Phase I - Creating the Honeynet
 
-After opening a free Azure subscription, I created two resource groups.  One resource group housed two VMs (1 Microsoft, 1 Linux) that would constitute the two endpoints of my honeynet.  The other resource group housed a Microsoft "Attacker" VM, which I used to simulate certain attacks, ensuring that my logs were being generated as planned.  Regarding the honeynet VMs, I purposefully misconfigured the firewall and Network Security Group to allow traffic from all ports.  Furthermore, I disabled every setting in Microsoft defender, resulting in a wide open, public internet facing environment that enticed many, many attackers!
+After opening a free Azure subscription, I created two resource groups.  One resource group housed two VMs (1 Microsoft, 1 Linux) that would constitute the two endpoints of my honeynet.  The Microsoft Windows VM also housed a SQL server.  The other resource group housed a Microsoft "Attacker" VM, which I used to simulate certain attacks, ensuring that my logs were being generated as planned.  Regarding the honeynet VMs, I purposefully misconfigured the firewall and Network Security Group to allow traffic from all ports.  Furthermore, I disabled every setting in Microsoft defender, resulting in a wide open, public internet facing environment that enticed many, many attackers!  If you'd like to see a quite thorough and detailed tutorial on how to create the exact honeynet I used for this lab, [click here!](https://github.com/Hank-Rutherford-Hill/How-To-Create-a-Basic-Honeynet-In-Azure).
 
 ![image](https://github.com/Hank-Rutherford-Hill/Azure-mini-SOC/assets/143474898/a00e349d-b7a5-4b07-9b03-9aac22afab44)
 
