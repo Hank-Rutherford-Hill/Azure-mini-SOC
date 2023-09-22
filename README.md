@@ -34,7 +34,7 @@ The metrics measured are as follows:
 
 ## Execution - Phase I - Creating the Honeynet
 
-After opening a free Azure subscription, I created two resource groups.  One resource group housed two VMs (1 Microsoft, 1 Linux) that would constitute the two endpoints of my honeynet.  The other resource group housed a Microsoft "Attacker" VM, which I used to simulate certain attacks, letting me know that my logs were being generated as planned.  Regarding the honeynet VMs, I purposefully misconfigured the firewall and Network Security Group to allow traffic from all ports.  Furthermore, I disabled every setting in Microsoft defender, resulting in a wide open, public internet facing environment that enticed many, many attackers!
+After opening a free Azure subscription, I created two resource groups.  One resource group housed two VMs (1 Microsoft, 1 Linux) that would constitute the two endpoints of my honeynet.  The other resource group housed a Microsoft "Attacker" VM, which I used to simulate certain attacks, ensuring that my logs were being generated as planned.  Regarding the honeynet VMs, I purposefully misconfigured the firewall and Network Security Group to allow traffic from all ports.  Furthermore, I disabled every setting in Microsoft defender, resulting in a wide open, public internet facing environment that enticed many, many attackers!
 
 ![image](https://github.com/Hank-Rutherford-Hill/Azure-mini-SOC/assets/143474898/a00e349d-b7a5-4b07-9b03-9aac22afab44)
 
@@ -58,7 +58,7 @@ As you can see, there are over 2,500 failed log in attempts in this time frame. 
 
 ## Execution - Phase III - Incident Response
 
-After establishing alert rules, I observed incidents being generated in Sentinel.  I examined several incidents, and for each, I assessed information about the entities involved in these attacks.  I reviewed the IP address, the TTPs / type of attack, and the timeline of each attack.  I made sure to expound upon my investigation by inspecting any related alerts that a particular entity was involved in, in order to further determine the scope of the incident(s) and wether or not an incident could have been a false positive. 
+After establishing alert rules, I observed incidents being generated in Sentinel.  I examined several incidents, and for each, I assessed information about the entities involved in these attacks.  I reviewed the IP address, the TTPs/type of attack, and the timeline of each attack.  I made sure to expound upon my investigation by inspecting any related alerts that a particular entity was involved in, in order to further determine the scope of the incident(s) and whether or not an incident could have been a false positive. 
 
 ![image](https://github.com/Hank-Rutherford-Hill/Azure-mini-SOC/assets/143474898/42cb7e12-2b8b-4018-9d13-25170b6f888c)
 
@@ -66,17 +66,17 @@ After establishing alert rules, I observed incidents being generated in Sentinel
 
 ![image](https://github.com/Hank-Rutherford-Hill/Azure-mini-SOC/assets/143474898/097931a1-b7dc-4ff5-aa2c-12845bdb1739)
 
-*I generated this Brute Force Success attack from my Attack-VM with a Powershell script, so the typical incident response measures were not carried through.  Normally, you would deallocate the machine that was compromised, change the credentials, enable MFA, blockk the IP address (and many more steps).  However, this was just a simulation (and I needed to continue using my Attack-VM to simulate and respond to additional attacks), so when I created the documentation for this event, I ```pretended``` that I responded with the aforementioned measures!*
+*I generated this Brute Force Success attack from my Attack-VM with a PowerShell script, so the typical incident response measures were not carried through.  Normally, you would deallocate the machine that was compromised, change the credentials, enable MFA, block the IP address (and many more steps).  However, this was just a simulation (and I needed to continue using my Attack-VM to simulate and respond to additional attacks), so when I created the documentation for this event, I ```pretended``` that I responded with the aforementioned measures!*
 
 ## Execution - Phase IV - Attack Remediation, Implemeting Regulatory Compliance Measures
 
-Post incident response, measures were taken to secure the environment.  I enabled security controls from both NIST 800-53, and Microsoft Defender for Cloud Recoommendations (which honestly were quite similar to NIST 800-53).  Some of these controls include:
+Post-incident response, measures were taken to secure the environment.  I enabled security controls from both NIST 800-53 and Microsoft Defender for Cloud Recommendations (which honestly were quite similar to NIST 800-53).  Some of these controls include:
 
-  - Disabling public acccess to the VMs and blob storage account
-  - Creating private endpoints for the storage account and VMs
-  - Creating an additional NSG for the subnet
-  - Enabling private links for key vault
-  - Employing a NSG rule to only allow traffic from my IP address
+  - Disabling public acccess to the VMs and blob storage account.
+  - Creating private endpoints for the storage account and VMs.
+  - Creating an additional NSG for the subnet.
+  - Enabling private links for key vault.
+  - Employing a NSG rule to only allow traffic from my IP address.
 
 ![image](https://github.com/Hank-Rutherford-Hill/Azure-mini-SOC/assets/143474898/7202871c-6d3a-4dfe-83f3-10a1a3d19291)
 
@@ -164,18 +164,18 @@ The following table shows the metrics we measured in our environment for another
 
 ## Recap & Reflection
 
-In my Miniature SOC / Azure Honeynet project:
+In my Miniature SOC/Azure Honeynet project:
 
-  - A honeynet was created in Azure
-  - An "Attacker" VM was utilized to simulate attacks
-  - Organic attacks were perpetrated by real cybercriminals
-  - Log Analytics Workspaces / KQL were utilized to review logs
-  - Attack metrics were captured for a 24 hour window of the honeynet
-  - Incidents triggered alerts in Sentinel, which were investigated
-  - The honeynet was hardened to become a secure environment
-  - Attack metrics were captured for a 24 hour window of the secure environment
-  - Results were compared
+  - A honeynet was created in Azure.
+  - An "Attacker" VM was utilized to simulate attacks.
+  - Organic attacks were perpetrated by real cybercriminals.
+  - Log Analytics Workspaces/KQL were utilized to review logs.
+  - Attack metrics were captured for a 24 hour window of the honeynet.
+  - Incidents triggered alerts in Sentinel, which were investigated.
+  - The honeynet was hardened to become a secure environment.
+  - Attack metrics were captured for a 24 hour window of the secure environment.
+  - Results were compared.
 
 It is worth noting that if the resources within the network were heavily utilized by regular users, it is likely that more security events and alerts may have been generated within the 24-hour period following the implementation of the security controls.
 
-Altogether, this project has been my most enjoyable, learning-filled experience since I went through my Sec+ certification.  Using KQL and Sentinel during this lab helped me grasp concepts needed to pass my Splunk Core User certification exam as well.  Learning how to use Azure has certainly opened many possibilities in terms of my tech career path.  I am excited to further hone my skills in Azure with future projects, and even obtaining an Azure certification or two!
+Altogether, this project has been my most enjoyable, learning-filled experience since I went through my Sec+ certification.  Using KQL and Sentinel during this lab helped me grasp concepts needed to pass my Splunk Core User certification exam as well.  Learning how to use Azure has certainly opened many possibilities in terms of my tech career path.  I am excited to further hone my skills in Azure with future projects, and even obtain an Azure certification or two!
